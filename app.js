@@ -11,7 +11,7 @@ const morgan = require('morgan');
 // database
 const connectDB = require('./db/connect');
 
-// routes
+// routers
 const authRoute = require('./routes/authRoute');
 
 // middlewares
@@ -21,7 +21,7 @@ const errorHandlerMiddleware = require('./middleware/error-handler');
 app.use(morgan('tiny'));
 app.use(express.json());
 
-app.use('/api/v1', authRoute);
+app.use('/api/v1/auth', authRoute);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
