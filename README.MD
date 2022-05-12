@@ -138,17 +138,17 @@
 - [x] check for oldPassword and newPassword in the body
 - [x] if one missing 400
 - [x] look for user with req.user.userId
-- [] check if oldPassword matches with user.comparePassword
-- [] if no match 401
-- [] if everything good set user.password equal to newPassword
-- [] await user.save()
+- [x] check if oldPassword matches with user.comparePassword
+- [x] if no match 401
+- [x] if everything good set user.password equal to newPassword
+- [x] await user.save()
 
 #### createTokenUser in Utils
 
-- [] create a file in utils (createTokenUser)
-- [] setup a function that accepts user object and returns userToken object
-- [] export as default
-- [] setup all the correct imports/exports and refactor existing code
+- [x] create a file in utils (createTokenUser)
+- [x] setup a function that accepts user object and returns userToken object
+- [x] export as default
+- [x] setup all the correct imports/exports and refactor existing code
 
 #### updateUser with User.findOneAndUpdate()
 
