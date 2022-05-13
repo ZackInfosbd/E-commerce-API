@@ -13,11 +13,17 @@ const {
   uploadImage,
 } = require('../controllers/productController');
 
-router.route('/').post(createProduct);
-router.route('/').get(getAllProducts);
-router.route('/:id').get(getSingleProduct);
-router.route('/').patch(updateProduct);
-router.route('/').delete(deleteProduct);
-router.route('/uploadImage').post(uploadImage);
+router
+  .route('/')
+  .post([authenticateUser, authorizePermissions('admin')], createProduct)
+  .get(getAllProducts);
+router
+  .route('/uploadImage')
+  .post([authenticateUser, authorizePermissions('admin')], uploadImage);
+router
+  .route('/:id')
+  .get(getSingleProduct)
+  .patch([authenticateUser, authorizePermissions('admin')], updateProduct)
+  .delete([authenticateUser, authorizePermissions('admin')], deleteProduct);
 
 module.exports = router;
