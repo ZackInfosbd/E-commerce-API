@@ -28,12 +28,13 @@ const ProductSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Please provide company name'],
       enum: {
-        values: ['ikea', 'liddy', 'macros'],
+        values: ['ikea', 'liddy', 'marcos'],
         message: '{VALUE} is not supported',
       },
     },
     colors: {
       type: [String],
+      default: ['#222'],
       required: true,
     },
     featured: {
@@ -51,7 +52,8 @@ const ProductSchema = new mongoose.Schema(
     },
     averageRating: {
       type: Number,
-      required: true,
+      required: false,
+      default: 0,
     },
 
     user: {
