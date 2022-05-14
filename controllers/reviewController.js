@@ -76,7 +76,7 @@ const updateReview = async (req, res) => {
     `);
   }
 
-  if ((!rating, title, comment)) {
+  if ((!rating, !title, !comment)) {
     throw new CustomError.BadRequestError(`
 Please provide all values
     `);
