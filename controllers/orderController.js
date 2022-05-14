@@ -4,10 +4,22 @@ const CustomError = require('../errors');
 const { StatusCodes } = require('http-status-codes');
 const { checkPermissions } = require('../utils');
 
-const getAllOrders = async (req, res) => {};
+const getAllOrders = async (req, res) => {
+  const orders = await Order.find({});
+  res.status(StatusCodes.OK).json({ count: orders.length, orders });
+};
 
 const getSingleOrder = async (req, res) => {
-  res.send('get single order route');
+  const { id: orderId } = req.params;
+  const order = await Order.findOne({ _id: orderId });
+
+  if (!order) {
+    throw new CustomError.NotFoundError(`
+  No order with id : ${orderId}
+  `);
+  }
+
+  res.status(StatusCodes.OK).json({ order });
 };
 
 const getCurrentUserOrders = async (req, res) => {
